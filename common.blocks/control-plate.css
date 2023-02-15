@@ -1,0 +1,97 @@
+.toggle {
+  --width: 200px;
+  --height: calc(var(--width) / 10);
+
+  position: relative;
+  display: inline-block;
+  width: var(--width);
+  height: var(--height);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border-radius: var(--height);
+  cursor: pointer;
+}
+
+.toggle input {
+  display: none;
+}
+
+.toggle .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--height);
+  background-color: #a921f3;
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle .slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(var(--width)/2);
+  height: calc(var(--height));
+  border-radius: calc(var(--height) / 2);
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgb(169, 33, 243);
+  transition: all 0.4s ease-in-out;
+}
+
+.toggle input:checked+.slider {
+  background-color: #a921f3;
+}
+
+.toggle input:checked+.slider::before {
+  transform: translateX(calc(var(--width)/2));
+}
+
+.toggle input:not(:checked)~.labels::after{
+  transition: color 0.6s ease-in-out;
+  color: #ffffff;
+}
+
+.toggle input:checked~.labels::before{
+  transition: color 0.6s ease-in-out;
+  color: #ffffff;
+}
+
+.toggle .labels {
+  position: absolute;
+  top: 4px;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  transition: background-color 1s ease;
+}
+
+.toggle .labels::after {
+  content: attr(data-off);
+  position: absolute;
+  right: 10px;
+  color: #4d4d4d;
+  transition: color 0.6s ease-in-out;
+  opacity: 1;
+}
+
+.toggle .labels::before {
+  content: attr(data-on);
+  position: absolute;
+  left: 18px;
+  color: #000000;
+  transition: color 0.6s ease-in-out;
+  opacity: 1;
+}
+
+.control-plate__add-bet-button{
+  background-color: white; /* Blue background */
+  border: none; /* Remove borders */
+  cursor: pointer;
+  display: inline-block;
+}
+.control-plate{
+  padding: 10px;
+}
+
+

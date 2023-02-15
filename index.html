@@ -4,77 +4,89 @@
 <head>
   <meta charset="utf-8">
   <title>Мой замечательный проект</title>
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>  <style>
-    .target-plate > *{
-      display: inline-block;
-      vertical-align: top;
-    }
-    header, main{
-      display: inline-block;
-      vertical-align: top;
-    }
-    .account > *{
-      display: inline-block;
-    }
-    a {
-      display: block;
-    }
-
-  </style>
-</head>
+  <script
+    src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
+  <link rel="stylesheet" href="common.blocks/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
 <body>
-  <header>
-    <div class="account">
-      <div>картинка аккаунта</div>
-      <div>имя фамилия</div>
+<header class="header fonts_default">
+  <div class="header__account">
+    <img class="header__avatar-img" src="img/icon_demo.png" alt="ава">
+    <div class="header__user-id fonts_header">имя фамилия</div>
+  </div>
+  <nav class="header__nav">
+    <a><i class="fa fa-home nav__icon"></i>Пари</a>
+    <a><i class="fa fa-address-book nav__icon"></i>Друзья</a>
+    <a><i class="fa fa-user nav__icon"></i>Профиль</a>
+    <a><i class="fa fa-info nav__icon"></i>О нас</a>
+  </nav>
+</header>
+<main class="fonts_default">
+  <!--<div class="target-plate">
+    <section class="target-plate__description">
+      <h2>Название цели 1</h2>
+      <ul>
+        <li>
+          надо вот это сделать
+        </li>
+        <li>
+          еще вот жто
+        </li>
+      </ul>
+    </section>
+    <div class="target-plate__progressbar">здесь будет прогрессбар</div>
+    <section class="target-plate__charity">
+      <h2>Вы помогаете:</h2>
+      <div>Организация 1</div>
+    </section>
+  </div>-->
+  <div class="control-plate">
+    <label class="toggle">
+      <input type="checkbox">
+      <span class="slider"></span>
+      <span class="labels" data-on="Активные" data-off="Завершенные"></span>
+    </label>
+    <button class="control-plate__add-bet-button">
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+  <div class="target-plate">
+    <section class="target-plate__description">
+      <div class="fonts_hint">
+        Цель
+      </div>
+      <h2 class="target-plate__description-header fonts_header">Название цели 2</h2>
+      <ul class="target-plate__description-iterations-list">
+        <li>
+          <div class="target-plate__description-iteration">
+            <input class="target-plate__iteration-state" type="checkbox">
+            <span class="target-plate__iteration-description fonts_default">надо другое</span>
+          </div>
+        </li>
+        <li>
+          <div class="target-plate__description-iteration">
+            <input class="target-plate__iteration-state" type="checkbox">
+            <spa class="target-plate__iteration-description fonts_default">еще вот это</spa>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <div class="target-plate__progressbar">здесь будет прогрессбар как раз можно будет для 7 лабы взять piety</div>
+    <div>
+      <section class="target-plate__charity">
+        <div class="fonts_hint">
+          Вы помогаете
+        </div>
+        <h2 class="target-plate__charity-name fonts_header">Название организации</h2>
+      </section>
+      <button class="target-plate__end-bet-button">Завершить пари</button>
     </div>
-    <nav>
-      <a>Пари</a>
-      <a>Друзья</a>
-      <a>Профиль</a>
-      <a>О нас</a>
-    </nav>
-  </header>
-  <main>
-    <div class="target-plate">
-      <section>
-        <h2>Название цели 1</h2>
-        <ul>
-          <li>
-            надо вот это сделать
-          </li>
-          <li>
-            еще вот жто
-          </li>
-        </ul>
-      </section>
-      <div>здесь будет прогрессбар</div>
-      <section>
-        <h2>Вы помогаете:</h2>
-        <div>Организация 1</div>
-      </section>
-    </div>
-    <div class="target-plate">
-      <section>
-        <h2>Название цели 2</h2>
-        <ul>
-          <li>
-            надо другое
-          </li>
-          <li>
-            еще вот это
-          </li>
-        </ul>
-      </section>
-      <div>здесь будет прогрессбар</div>
-      <section>
-        <h2>Вы помогаете:</h2>
-        <div>Организация 2</div>
-      </section>
-    </div>
-  </main>
+  </div>
+</main>
 <footer>
+  <a target="_blank" href="https://icons8.com/icon/24717/add">Add</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
   <p>у всех серьезных дядек есть подвал куда они складывают всякое</p>
   <sub>че</sub>вы<sup>от меня</sup>хотите<sub>?</sub>
   <details>

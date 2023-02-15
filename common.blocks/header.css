@@ -1,0 +1,49 @@
+main{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.header{
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+body{
+  position: relative;
+  min-height: 100vh;
+  background: #fbf4ff;
+}
+.account > *{
+  display: inline-block;
+}
+
+.header__nav > * {
+  display: block;
+}
+
+.nav__icon{
+  width: 20px !important;
+  padding: 3px;
+
+}
+
+.header__avatar-img{
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.header__user-id{
+  margin: auto;
+  width: 60%;
+  display: inline-block;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+}

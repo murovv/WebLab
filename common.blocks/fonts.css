@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+.fonts_hint{
+  font-size: 10px;
+  color: #888888;
+}
+
+.fonts_header{
+  font-family: 'Unbounded', cursive;
+}
+
+.fonts_default{
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}

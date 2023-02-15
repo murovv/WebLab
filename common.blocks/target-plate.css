@@ -1,0 +1,72 @@
+.target-plate > *{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.target-plate__description {
+
+}
+
+.target-plate__description-hint{
+  font-size: 10pt;
+  color: #888888;
+}
+
+.target-plate__end-bet-button{
+  border: none;
+  background-color: #a921f3;
+  border-radius: 5px;
+  color: white;
+}
+
+.target-plate__description-iterations-list{
+  list-style-type: none;
+}
+
+.target-plate__description-iteration > *{
+  display: inline-block;
+}
+
+@keyframes cross{
+  0%   { width : 0; }
+  100% { width: 100%; }
+}
+
+.target-plate__iteration-description{
+  position: relative;
+  white-space: nowrap;
+}
+
+.target-plate__iteration-state:checked~.target-plate__iteration-description::after{
+  content: ' ';
+  position:absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: black;
+  animation-name: cross;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.target-plate__iteration-state:checked~.target-plate__iteration-description{
+  color: #888888;
+  transition: color 1s ease-in-out;
+}
+
+.target-plate__progressbar{
+  width: 200px;
+}
+
+.target-plate{
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.target-plate__charity-name{
+  width: 300px;
+}
