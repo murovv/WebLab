@@ -4,12 +4,17 @@
 <head>
   <meta charset="utf-8">
   <title>Мой замечательный проект</title>
+  <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+  <script src="http://benpickles.github.io/peity/jquery.peity.js"></script>
   <script
     src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=css&amp;skin=sunburst"></script>
+  <script src="js/loadTime.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/load_mock.js"></script>
   <link rel="stylesheet" href="common.blocks/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-
+</head>
 <body>
 <header class="header fonts_default">
   <div class="header__account">
@@ -17,76 +22,97 @@
     <div class="header__user-id fonts_header">имя фамилия</div>
   </div>
   <nav class="header__nav">
-    <a><i class="fa fa-home nav__icon"></i>Пари</a>
-    <a><i class="fa fa-address-book nav__icon"></i>Друзья</a>
-    <a><i class="fa fa-user nav__icon"></i>Профиль</a>
-    <a><i class="fa fa-info nav__icon"></i>О нас</a>
+    <a class="header__link" target="_self" href="index.html"><i class="fa fa-home nav__icon"></i>Пари</a>
+    <a class="header__link" target="_self" href="friends.html"><i class="fa fa-address-book nav__icon"></i>Друзья</a>
+    <a class="header__link"><i class="fa fa-user nav__icon"></i>Профиль</a>
+    <a class="header__link"><i class="fa fa-info nav__icon"></i>О нас</a>
   </nav>
 </header>
 <main class="fonts_default">
-  <!--<div class="target-plate">
-    <section class="target-plate__description">
-      <h2>Название цели 1</h2>
-      <ul>
-        <li>
-          надо вот это сделать
-        </li>
-        <li>
-          еще вот жто
-        </li>
-      </ul>
-    </section>
-    <div class="target-plate__progressbar">здесь будет прогрессбар</div>
-    <section class="target-plate__charity">
-      <h2>Вы помогаете:</h2>
-      <div>Организация 1</div>
-    </section>
-  </div>-->
   <div class="control-plate">
     <label class="toggle">
       <input type="checkbox">
       <span class="slider"></span>
       <span class="labels" data-on="Активные" data-off="Завершенные"></span>
     </label>
-    <button class="control-plate__add-bet-button">
+    <button onclick="displayTargetForm()" class="control-plate__add-bet-button">
       <i class="fa fa-plus"></i>
     </button>
   </div>
-  <div class="target-plate">
+  <div id="loader">
+    <div class="loader__lds-dual-ring"></div>
+    <div id="loader-error" class="loader__error">Что то пошло не так :(</div>
+  </div>
+  <form id="target-plate-form" class="target-plate target-plate_form  target-plate_form-hidden">
     <section class="target-plate__description">
       <div class="fonts_hint">
         Цель
       </div>
-      <h2 class="target-plate__description-header fonts_header">Название цели 2</h2>
-      <ul class="target-plate__description-iterations-list">
-        <li>
-          <div class="target-plate__description-iteration">
-            <input class="target-plate__iteration-state" type="checkbox">
-            <span class="target-plate__iteration-description fonts_default">надо другое</span>
-          </div>
-        </li>
-        <li>
-          <div class="target-plate__description-iteration">
-            <input class="target-plate__iteration-state" type="checkbox">
-            <spa class="target-plate__iteration-description fonts_default">еще вот это</spa>
-          </div>
-        </li>
+      <input id="target-name-input" type="text" placeholder="Название организации"
+                                                    class="target-plate__description-header fonts_header" required>
+      <div class="target-plate__add-subtarget">
+        <button type="button" onclick="addSubtarget()"><i class="fa fa-plus-circle"></i></button>
+        <input onkeydown="return onSubtargetSubmit()" id="target-plate-form__new-subtarget-name" type="text">
+      </div>
+      <ul id="target-plate-form__subtarget-list" class="target-plate__description-iterations-list">
       </ul>
     </section>
-    <div class="target-plate__progressbar">здесь будет прогрессбар как раз можно будет для 7 лабы взять piety</div>
+    <div class="target-plate__date-input">
+      <input id="target-time" type="datetime-local" required>
+    </div>
     <div>
       <section class="target-plate__charity">
-        <div class="fonts_hint">
+        <label for="organization-name-input" class="fonts_hint">
           Вы помогаете
-        </div>
-        <h2 class="target-plate__charity-name fonts_header">Название организации</h2>
+        </label>
+        <input list="charity-name-list" id="organization-name-input" class="target-plate__charity-name fonts_header">
+        <datalist id="charity-name-list">
+          <option value="кошечьки">
+          <option value="собачьки">
+          <option value="попугайчики">
+        </datalist>
       </section>
-      <button class="target-plate__end-bet-button">Завершить пари</button>
+      <input value="Создать цель" type="submit" class="target-plate__end-bet-button"></input>
+    </div>
+  </form>
+  <div id="target-plates">
+    <div class="target-plate">
+      <section class="target-plate__description">
+        <div class="fonts_hint">
+          Цель
+        </div>
+        <h2 class="target-plate__description-header fonts_header">Название цели 2</h2>
+        <ul class="target-plate__description-iterations-list">
+          <li>
+            <div class="target-plate__description-iteration">
+              <input class="target-plate__iteration-state" type="checkbox">
+              <span class="target-plate__iteration-description fonts_default">надо другое</span>
+            </div>
+          </li>
+          <li>
+            <div class="target-plate__description-iteration">
+              <input class="target-plate__iteration-state" type="checkbox">
+              <span class="target-plate__iteration-description fonts_default">еще вот это</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <div class="target-plate__progressbar">здесь будет прогрессбар как раз можно будет для 7 лабы взять piety</div>
+      <div class="target-plate__right-pane">
+        <section class="target-plate__charity">
+          <div class="fonts_hint">
+            Вы помогаете
+          </div>
+          <h2 class="target-plate__charity-name fonts_header">Название организации</h2>
+        </section>
+        <button class="target-plate__end-bet-button">Завершить пари</button>
+      </div>
     </div>
   </div>
 </main>
 <footer>
-  <a target="_blank" href="https://icons8.com/icon/24717/add">Add</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+  <a target="_blank" href="https://icons8.com/icon/24717/add">Add</a> icon by <a target="_blank"
+                                                                                 href="https://icons8.com">Icons8</a>
   <p>у всех серьезных дядек есть подвал куда они складывают всякое</p>
   <sub>че</sub>вы<sup>от меня</sup>хотите<sub>?</sub>
   <details>
@@ -110,6 +136,38 @@
       </pre>
   </details>
 </footer>
+<template id="subtarget-template">
+  <li>
+    <div class="target-plate__description-iteration">
+      <input class="target-plate__iteration-state" type="checkbox">
+      <span class="target-plate__iteration-description fonts_default"></span>
+    </div>
+  </li>
+</template>
+<template id="target-plate-template">
+  <div class="target-plate">
+    <section class="target-plate__description">
+      <div class="fonts_hint">
+        Цель
+      </div>
+      <h2 class="target-plate__description-header fonts_header"></h2>
+      <ul class="target-plate__description-iterations-list">
+      </ul>
+    </section>
+    <div class="target-plate__progressbar">
+      <span class="target-plate__donut" data-peity='{ "fill": ["violet", "#eeeeee"], "innerRadius": 75, "radius": 80 }'></span>
+    </div>
+    <div class="target-plate__right-pane">
+      <section class="target-plate__charity">
+        <div class="fonts_hint">
+          Вы помогаете
+        </div>
+        <h2 class="target-plate__charity-name fonts_header"></h2>
+      </section>
+      <button class="target-plate__end-bet-button">Завершить пари</button>
+    </div>
+  </div>
+</template>
 </body>
 
 </html>

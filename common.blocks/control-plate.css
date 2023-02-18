@@ -88,10 +88,14 @@
   background-color: white; /* Blue background */
   border: none; /* Remove borders */
   cursor: pointer;
-  display: inline-block;
+  padding-top: 5px;
+  margin-left: 5px;
+  border-radius: 3px;
 }
 .control-plate{
   padding: 10px;
+  display: inline-flex;
+  align-items: center;
 }
 
 

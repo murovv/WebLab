@@ -1,12 +1,3 @@
-.target-plate > *{
-  display: inline-block;
-  vertical-align: top;
-}
-
-.target-plate__description {
-
-}
-
 .target-plate__description-hint{
   font-size: 10pt;
   color: #888888;
@@ -21,10 +12,15 @@
 
 .target-plate__description-iterations-list{
   list-style-type: none;
+  padding:0;
 }
 
 .target-plate__description-iteration > *{
-  display: inline-block;
+  display: inline-flex;
+}
+
+.target-plate__description-iteration{
+  white-space: nowrap;
 }
 
 @keyframes cross{
@@ -59,14 +55,85 @@
 
 .target-plate__progressbar{
   width: 200px;
+
 }
 
 .target-plate{
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 100%;
   background: white;
   padding: 10px;
   border-radius: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 .target-plate__charity-name{
   width: 300px;
 }
+
+.target-plate_form{
+  overflow:hidden;
+  transition:max-height 1s ease-out, padding 1s ease-out, border 1s ease-out, opacity 1s ease-out, line-height 1s ease-out;
+  height:auto;
+  max-height: max-content;
+  opacity: 1;
+}
+
+
+.target-plate_form-hidden{
+  line-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  border: none;
+  max-height: 0 !important;
+  opacity: 0;
+}
+
+.target-plate__add-subtarget{
+  display: inline-flex;
+}
+
+.target-plate__description{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.target-plate__charity{
+  display: flex;
+  flex-direction: column;
+}
+
+.target-plate__progressbar{
+  display: flex;
+  align-items: center;
+}
+
+#target-plates{
+  padding-right: 20px;
+}
+
+@media (max-width: 800px) {
+  .target-plate{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+/*@keyframes append-animate {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.target-plate_new {
+  animation: append-animate .5s linear;
+}*/
