@@ -9,13 +9,18 @@ const fetchTimeout = (url, ms, { signal, ...options } = {}) => {
   return promise.finally(() => clearTimeout(timeout));
 };
 
-function loadData(){
+function loadData(isActive){
+  document.getElementById("loader").classList.toggle("loader_invisible")
   fetchTimeout(link, 5000, { signal: controller.signal })
     .then(response => response.json())
-    .then((val) => {val.forEach(function (elem){
-      createTarget(elem)
+    .then((val) => {
+      document.getElementById("target-plates").innerHTML = ""
+      val.forEach(function (elem){
+      if(elem["isActive"] === !!isActive){
+        createTarget(elem)
+      }
     })
-      document.getElementById("loader").classList.add("loader_invisible")
+      document.getElementById("loader").classList.toggle("loader_invisible")
       $(document.querySelectorAll("span.target-plate__donut")).peity("donut")
     })
     .catch(error => {
@@ -26,7 +31,7 @@ function loadData(){
     });
 }
 document.addEventListener('DOMContentLoaded', (event) => {
-  loadData();
+  loadData(true);
 });
 
 

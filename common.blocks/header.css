@@ -20,7 +20,12 @@ html, body{
   background: #fbf4ff;
   width: auto;
   margin: 0;
-  overflow: auto;
+}
+
+body::after{
+  content: '';
+  display: block;
+  height: 200px;
 }
 
 @media (min-width: 1000px) {
@@ -66,9 +71,20 @@ html, body{
   width: 60%;
 }
 footer {
-  height: auto;
+  height: 200px;
+  background-color: #a921f3;
+  color: white;
   position: absolute;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
   bottom: 0;
+}
+
+footer > *{
+  padding: 5px;
 }
 .header__nav{
   margin: auto 10px;
@@ -109,7 +125,6 @@ footer {
 .target-plate__progressbar{
   position: relative;
 }
-
 
 
 

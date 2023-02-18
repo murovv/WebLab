@@ -93,6 +93,7 @@
   border-radius: 3px;
 }
 .control-plate{
+  margin-left: 10px;
   padding: 10px;
   display: inline-flex;
   align-items: center;

@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   document.querySelector(".toggle > input").addEventListener('change', (event) => {
     if (event.currentTarget.checked) {
-      alert('checked');
+      loadData(false);
     } else {
-      alert('not checked');
+      loadData(true);
     }
   });
   setInterval(function (){
