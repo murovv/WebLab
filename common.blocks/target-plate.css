@@ -121,8 +121,9 @@
     flex-direction: column;
     align-items: center;
   }
-
 }
+
+
 /*@keyframes append-animate {
   from {
     transform: scale(0);
